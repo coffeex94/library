@@ -1,0 +1,244 @@
+/* ===== 颜色变量 ===== */
+:root {
+  --bg-color: #f4f4f4;
+  --text-color: #333;
+  --card-bg: #fff;
+  --header-bg: #fff;
+  --nav-bg: #f0f0f0;
+  --footer-bg: #f9f9f9;
+}
+
+body.dark-mode {
+  --bg-color: #1e1e1e;
+  --text-color: #f4f4f4;
+  --card-bg: #2c2c2c;
+  --header-bg: #1b1b1b;
+  --nav-bg: #2f2f2f;
+  --footer-bg: #111;
+}
+
+/* ===== 全局样式 ===== */
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+/* ===== 头部 ===== */
+header {
+  background: var(--header-bg);
+  text-align: center;
+  padding: 2rem 1rem 1rem;
+  border-bottom: 1px solid #ccc;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.5rem;
+  color: #4a90e2;
+}
+
+header p {
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* ===== 搜索框导航栏 ===== */
+nav {
+  background-color: var(--nav-bg);
+  padding: 1rem;
+}
+
+.search-form {
+  max-width: 500px;
+  margin: 0 auto;
+  display: flex;
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.search-form label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.search-form input[type="text"] {
+  flex: 1;
+  padding: 0.6rem 1rem;
+  border: none;
+  outline: none;
+  font-size: 1rem;
+}
+
+.search-form button {
+  background-color: #3498db;
+  border: none;
+  padding: 0 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-form button svg {
+  width: 1rem;
+  height: 1rem;
+  fill: #fff;
+}
+
+/* ===== 暗黑模式按钮 ===== */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  background: #3498db;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: 5px;
+  z-index: 1000;
+}
+
+/* ===== 主体内容区域 ===== */
+main {
+  max-width: 1300px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  margin-bottom: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
+  border-left: 5px solid #3498db;
+  padding-left: 10px;
+  color: #3498db;
+  margin-bottom: 1rem;
+}
+
+/* ===== 图书展示区 ===== */
+.book-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+}
+
+@media (max-width: 768px) {
+  .book-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .book-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+article {
+  background-color: var(--card-bg);
+  padding: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  transition: transform 0.2s;
+}
+
+article:hover {
+  transform: translateY(-5px);
+}
+
+article img {
+  width: 90px;
+  height: 132px;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+
+.book-title {
+  font-size: 1rem;
+  font-weight: bold;
+  margin: 0.3rem 0;
+}
+
+.book-author {
+  font-size: 0.85rem;
+  color: #666;
+}
+
+.book-desc {
+  font-size: 0.8rem;
+  margin: 0.4rem 0;
+  min-height: 40px;
+}
+
+/* ===== 下载按钮 ===== */
+.download-btn {
+  display: inline-block;
+  padding: 0.4rem 0.8rem;
+  background-color: #3498db;
+  color: white;
+  text-decoration: none;
+  border-radius: 4px;
+  font-size: 0.85rem;
+}
+
+/* ===== 章节插图 ===== */
+.section-image {
+  max-width: 600px;
+  height: auto;
+  display: block;
+  margin: 1rem auto;
+  border-radius: 10px;
+}
+
+/* ===== 页脚 ===== */
+footer {
+  text-align: center;
+  padding: 1.5rem;
+  background-color: var(--footer-bg);
+  font-size: 0.85rem;
+  border-top: 1px solid #ccc;
+}
+
+.quote {
+  font-style: italic;
+  margin-top: 2rem;
+  color: #999;
+}
+/* 父容器要加这个类，比如你用的是 <section class="book-list"> */
+.book-list {
+  counter-reset: book-counter;
+}
+
+/* 每个书卡片前加编号 */
+.book-list article {
+  counter-increment: book-counter;
+  position: relative;
+  padding-left: 60px; /* 给编号留出空间，视情况调整 */
+}
+
+/* 序号样式 */
+.book-list article::before {
+  content: "No." counter(book-counter);
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #000; /* 黑色序号 */
+}
